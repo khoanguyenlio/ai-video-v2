@@ -70,7 +70,11 @@ def read_video_with_pose(video_path, log_dir="logs", smooth_landmarks=True, proc
     
     # Create output directories
     if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
+        try:
+            os.makedirs(log_dir)
+            print(f"Successfully created log directory: {log_dir}")
+        except Exception as e:
+            print(f"Error creating log directory: {e}")
         
     # Main processing loop
     while True:
